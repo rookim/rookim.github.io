@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="assets/css/style.css">
-
   <style>
     body,
     h1,
@@ -300,23 +299,41 @@
           </p>
         </div>
         <br />
-        <!-- <p>Let's get in touch. Send me a message:</p> -->
+        <p>You can also send me a message directly here:</p>
 
-        <!-- <form action="/action_page.php" target="_blank">
-          <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name" /></p>
-          <p><input class="w3-input w3-padding-16" type="text" placeholder="Email" required name="Email" /></p>
-          <p><input class="w3-input w3-padding-16" type="text" placeholder="Subject" required name="Subject" /></p>
-          <p><input class="w3-input w3-padding-16" type="text" placeholder="Message" required name="Message" /></p>
+        <form onsubmit="sendEmail(); reset(); return false;">
+          <p><input id="name" class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name" /></p>
+          <p><input id="email" class="w3-input w3-padding-16" type="text" placeholder="Email" required name="Email" /></p>
+          <p><input id="subject" class="w3-input w3-padding-16" type="text" placeholder="Subject" required name="Subject" /></p>
+          <p><input id="contents" class="w3-input w3-padding-16" type="text" placeholder="Message" required name="Message" /></p>
           <p>
             <button class="w3-button w3-light-grey w3-padding-large" type="submit">
               <i class="fa fa-paper-plane"></i>
-              <a href="mailto: rookim.dev@gmail.com">
+              <!-- <a href="mailto: rookim.dev@gmail.com"> -->
                 SEND MESSAGE
               </a>
             </button>
           </p>
-        </form> -->
+        </form>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script>
+          function sendEmail() {
+            Email.send({
+              SecureToken: "957c48df-2d8c-4d19-ac00-2e316b2a92bc",
+              To : 'rookim.dev@gmail.com',
+              From : 'rookim.dev@gmail.com',
+              Subject : "New Contact Form Inquiry From rookim.github.io",
+              Body : "Name: " + document.getElementById("name").value
+              + "<br> Email: " + document.getElementById("email").value
+              + "<br> Subject: " + document.getElementById("subject").value
+              + "<br> Message: " + document.getElementById("contents").value
+            }).then(
+              message => alert(message)
+            );
+          }
+        </script>
         <!-- End Contact Section -->
+
       </div>
 
       <!-- Footer -->
